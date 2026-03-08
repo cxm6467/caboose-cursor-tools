@@ -1,0 +1,33 @@
+{
+  "name": "slack",
+  "version": "1.0.0",
+  "description": "Integrate Slack communication directly into your Cursor workflow. Check unread messages, read channel histories, search conversations, and send messages without leaving your editor. Uses the slk CLI for fast, keyboard-driven Slack access. Use '/slack' to interact or '/setup-slack' for guided installation.",
+  "longDescription": "This plugin brings Slack into your development environment through two powerful skills:\n\n'/slack' Skill:\n- Check unread message counts across all channels\n- Read recent messages from specific channels\n- Search conversations by keyword\n- Send messages to channels or DMs\n- View thread replies\n- All via natural language commands to Cursor AI\n\n'/setup-slack' Skill:\n- Guides you through slk gem installation\n- Helps configure Slack API tokens\n- Tests the setup\n- Troubleshoots common issues\n- One-time setup process\n\nPerfect for:\n- Staying updated without context switching\n- Quick status checks during development\n- Searching for technical discussions\n- Sending updates on deployments/builds",
+  "features": [
+    "Check unread messages across all channels",
+    "Read channel history with message count limits",
+    "Search messages by keyword",
+    "Send messages to channels and DMs",
+    "View and reply to threads",
+    "Natural language interface via AI",
+    "Fast CLI-based (no browser needed)",
+    "Guided setup with '/setup-slack' skill"
+  ],
+  "usageExamples": [
+    "/slack - Check unread messages",
+    "Say 'check slack for unread messages' - Natural language",
+    "Say 'search slack for \"api bug\"' - Search conversations",
+    "Say 'send message to #dev channel' - Send messages",
+    "/setup-slack - Install and configure slk CLI"
+  ],
+  "requiresSetup": {
+    "ruby": "Ruby must be installed for slk gem",
+    "slk": "Install: gem install slk",
+    "token": "Slack API token required (guided by /setup-slack)",
+    "cursorrules": "Skills must be added to .cursorrules file"
+  },
+  "author": {
+    "name": "Caboose AI",
+    "url": "https://github.com/cxm6467/caboose-ai"
+  }
+}

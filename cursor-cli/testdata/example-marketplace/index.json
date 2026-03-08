@@ -1,0 +1,34 @@
+{
+  "name": "Example Cursor Rules Marketplace",
+  "description": "A sample marketplace for Cursor IDE rules",
+  "homepage": "https://github.com/example/cursor-rules",
+  "version": "1.0",
+  "rules": [
+    {
+      "name": "typescript-standards",
+      "description": "TypeScript coding standards and best practices",
+      "author": "Example Team",
+      "version": "1.2.0",
+      "url": "https://raw.githubusercontent.com/example/cursor-rules/main/rules/typescript-standards.mdc",
+      "tags": ["typescript", "standards", "best-practices"],
+      "homepage": "https://github.com/example/cursor-rules/blob/main/docs/typescript.md"
+    },
+    {
+      "name": "react-patterns",
+      "description": "React component patterns and architecture guidelines",
+      "author": "Example Team",
+      "version": "2.0.1",
+      "url": "https://raw.githubusercontent.com/example/cursor-rules/main/rules/react-patterns.mdc",
+      "tags": ["react", "javascript", "patterns"],
+      "repository": "https://github.com/example/cursor-rules"
+    },
+    {
+      "name": "go-style-guide",
+      "description": "Go programming style guide and conventions",
+      "author": "Go Community",
+      "version": "1.0.0",
+      "url": "https://raw.githubusercontent.com/example/cursor-rules/main/rules/go-style-guide.mdc",
+      "tags": ["go", "golang", "style-guide"]
+    }
+  ]
+}

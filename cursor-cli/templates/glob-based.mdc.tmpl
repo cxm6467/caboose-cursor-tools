@@ -1,0 +1,34 @@
+---
+description: "{{.Description}}"
+globs:
+{{- range .Globs}}
+  - "{{.}}"
+{{- end}}
+alwaysApply: false
+tags:
+{{- range .Tags}}
+  - {{.}}
+{{- end}}
+version: "1.0.0"
+---
+
+# {{.Name}} - File-Specific Rules
+
+These rules apply only to files matching: {{range .Globs}}`{{.}}` {{end}}
+
+## Patterns and Conventions
+
+Define specific patterns for these file types:
+
+### Naming Conventions
+- How should files be named?
+- What naming patterns to follow?
+
+### Code Structure
+- Organization principles
+- Required exports/imports
+- Common patterns
+
+### Anti-Patterns
+- What to avoid
+- Common mistakes

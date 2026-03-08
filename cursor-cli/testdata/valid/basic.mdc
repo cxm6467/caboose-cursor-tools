@@ -1,0 +1,33 @@
+---
+description: "Basic TypeScript coding standards"
+globs:
+  - "**/*.ts"
+  - "**/*.tsx"
+alwaysApply: false
+tags:
+  - typescript
+  - coding-standards
+version: "1.0.0"
+---
+
+# TypeScript Coding Standards
+
+## General Guidelines
+
+- Use strict mode
+- Prefer explicit types over `any`
+- Use meaningful variable names
+
+## Example
+
+```typescript
+// Good
+const getUserById = (id: number): User => {
+  return users.find(u => u.id === id);
+};
+
+// Bad
+const get = (x: any): any => {
+  return data.find(d => d.id === x);
+};
+```

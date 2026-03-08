@@ -1,0 +1,30 @@
+{
+  "name": "code-lint",
+  "version": "1.0.0",
+  "description": "Automatic code quality enforcement with multi-language linting. Runs linters automatically on file edits via Cursor hooks, providing instant feedback in your AI chat. Supports per-project configuration with .linter.json. Works with ESLint, Pylint, RuboCop, golint, and more. Zero manual intervention required.",
+  "longDescription": "This plugin integrates seamlessly with Cursor's hook system to provide automatic linting on every file save. When you edit a file, the lint-daemon:\n- Detects the file's language automatically\n- Runs the appropriate linter (ESLint, Pylint, etc.)\n- Returns formatted results to Cursor AI\n- Allows AI to fix issues immediately\n\nSupports project-level configuration via .linter.json to customize linters, disable specific rules, or add custom commands.",
+  "features": [
+    "Automatic linting on file edits (Write, Edit tools)",
+    "Multi-language support (JS/TS, Python, Ruby, Go, etc.)",
+    "Project-specific configuration with .linter.json",
+    "Language auto-detection by file extension",
+    "Formatted output for AI consumption",
+    "Hook integration with Cursor IDE",
+    "Silent operation (no interruptions)"
+  ],
+  "usageExamples": [
+    "Automatic: Edit any file, linter runs automatically",
+    "Configure: Create .linter.json in project root",
+    "Example config: {\"javascript\": {\"command\": \"eslint\", \"args\": [\"--format\", \"compact\"]}}",
+    "Test hook: echo '{\"tool_name\":\"Write\",\"tool_input\":{\"file_path\":\"test.js\"}}' | lint-daemon"
+  ],
+  "requiresSetup": {
+    "hooks": ".cursor/hooks.json must include lint-daemon on Write/Edit",
+    "linters": "Install linters: npm install -g eslint, pip install pylint, etc.",
+    "configuration": "Optional: Create .linter.json for project-specific settings"
+  },
+  "author": {
+    "name": "Caboose AI",
+    "url": "https://github.com/cxm6467/caboose-ai"
+  }
+}

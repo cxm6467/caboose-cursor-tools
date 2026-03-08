@@ -1,0 +1,16 @@
+---
+description: "Always-on global coding conventions"
+globs: []
+alwaysApply: true
+tags:
+  - global
+  - conventions
+---
+
+# Global Coding Conventions
+
+These rules apply to all files in the project:
+
+- Write clear, self-documenting code
+- Add comments for complex logic
+- Follow team's code review guidelines

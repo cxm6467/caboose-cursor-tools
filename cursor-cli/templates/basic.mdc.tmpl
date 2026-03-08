@@ -1,0 +1,38 @@
+---
+description: "{{.Description}}"
+globs:
+{{- range .Globs}}
+  - "{{.}}"
+{{- end}}
+alwaysApply: false
+tags:
+{{- range .Tags}}
+  - {{.}}
+{{- end}}
+version: "1.0.0"
+author: "{{.Author}}"
+---
+
+# {{.Name}}
+
+## Description
+
+{{.Description}}
+
+## Guidelines
+
+- Add your coding guidelines here
+- Provide examples where helpful
+- Keep rules clear and actionable
+
+## Examples
+
+```
+// Add code examples here
+```
+
+## References
+
+- Link to relevant documentation
+- Team conventions
+- Best practices

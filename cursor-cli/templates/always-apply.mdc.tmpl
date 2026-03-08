@@ -1,0 +1,33 @@
+---
+description: "{{.Description}}"
+globs: []
+alwaysApply: true
+tags:
+{{- range .Tags}}
+  - {{.}}
+{{- end}}
+version: "1.0.0"
+---
+
+# {{.Name}} - Global Rules
+
+These rules apply to ALL files in the project, regardless of type or location.
+
+## Universal Guidelines
+
+Define project-wide conventions that apply everywhere:
+
+### Code Quality
+- Readability standards
+- Documentation requirements
+- Comment guidelines
+
+### Best Practices
+- Security considerations
+- Performance guidelines
+- Maintainability principles
+
+### Team Standards
+- Code review expectations
+- Testing requirements
+- Commit message format

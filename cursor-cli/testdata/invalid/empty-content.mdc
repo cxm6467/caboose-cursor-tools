@@ -1,0 +1,7 @@
+---
+description: "Empty content test"
+globs:
+  - "**/*.py"
+alwaysApply: false
+---
+

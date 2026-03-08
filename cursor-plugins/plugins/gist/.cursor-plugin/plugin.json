@@ -1,0 +1,32 @@
+{
+  "name": "gist",
+  "version": "1.0.0",
+  "description": "Effortlessly create and update GitHub Gists from Cursor with AI-generated documentation. Automatically generates descriptive README comments for your gists using Cursor AI's understanding of your code. Perfect for sharing code snippets, examples, or quick documentation. Use '/gist-create <file>' or '/gist-update <file>' skills for one-command workflows.",
+  "longDescription": "This plugin streamlines GitHub Gist creation and management with intelligent documentation:\n\n'/gist-create <file>' Skill:\n- Takes any file from your project\n- Analyzes the code using Cursor AI\n- Generates a descriptive README comment explaining the purpose, usage, and context\n- Creates a public gist with the file content\n- Adds the README as a comment on the gist\n- Returns the gist URL for sharing\n\n'/gist-update <file>' Skill:\n- Updates an existing gist with new content\n- Regenerates the README comment based on changes\n- Maintains gist history\n- Preserves the gist URL\n\nIdeal for:\n- Sharing code examples with colleagues\n- Creating quick documentation snippets\n- Publishing reusable utilities\n- Demonstrating bugs or features",
+  "features": [
+    "One-command gist creation from any file",
+    "AI-generated README comments",
+    "Automatic gist updates",
+    "Public gist support",
+    "README comment updates on changes",
+    "Gist URL returned for easy sharing",
+    "Works with any file type",
+    "No binary needed (pure skills)"
+  ],
+  "usageExamples": [
+    "/gist-create myfile.js - Create gist with AI-generated docs",
+    "/gist-update myfile.js - Update existing gist",
+    "Say 'create a gist from this file' - Natural language",
+    "Say 'update the gist for config.json' - Update existing"
+  ],
+  "requiresSetup": {
+    "ghCLI": "Install GitHub CLI: brew install gh",
+    "authentication": "Authenticate: gh auth login",
+    "gistExtension": "gh CLI has built-in gist support (no extension needed)",
+    "cursorrules": "Skills must be added to .cursorrules file"
+  },
+  "author": {
+    "name": "Caboose AI",
+    "url": "https://github.com/cxm6467/caboose-ai"
+  }
+}

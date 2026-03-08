@@ -1,0 +1,32 @@
+{
+  "name": "gh-copilot-review",
+  "version": "1.0.0",
+  "description": "Streamline GitHub Copilot code review workflow with automated feedback monitoring. Watches for Copilot PR reviews, displays inline comments with file context, and enables AI-assisted fixes. Use '/gh-copilot-review' skill for full automation: wait → display feedback → apply fixes → resolve threads → push changes. Makes code review iteration effortless.",
+  "longDescription": "This plugin transforms GitHub Copilot code reviews into an interactive workflow within Cursor. It:\n- Polls GitHub API for Copilot reviews on your PR\n- Detects when GitHub Copilot is requested as a reviewer\n- Displays review feedback with file paths, line numbers, and comments\n- Provides context for each suggestion\n- Allows Cursor AI to apply fixes directly\n- Can resolve review threads after fixes\n- Pushes updated code automatically\n\nPerfect for iterating on PRs quickly without leaving your editor. The '/gh-copilot-review' skill automates the entire flow from detection to resolution.",
+  "features": [
+    "Automated Copilot review detection",
+    "Real-time polling with configurable intervals",
+    "Formatted feedback display with file context",
+    "Line-number accurate suggestions",
+    "Review thread resolution support",
+    "Works for current branch or specific PR number",
+    "Color-coded status updates",
+    "Integration with '/gh-copilot-review' skill for full automation"
+  ],
+  "usageExamples": [
+    "/gh-copilot-review - Full automated workflow (skill)",
+    "watch-copilot-reviews - Watch current branch PR",
+    "watch-copilot-reviews 42 - Watch specific PR #42",
+    "Workflow: Request Copilot review → run tool → get feedback → AI fixes issues"
+  ],
+  "requiresSetup": {
+    "ghCLI": "Install GitHub CLI: brew install gh",
+    "authentication": "Authenticate: gh auth login",
+    "repository": "Must be in GitHub repository",
+    "copilot": "GitHub Copilot must be enabled for your organization/repo"
+  },
+  "author": {
+    "name": "Caboose AI",
+    "url": "https://github.com/cxm6467/caboose-ai"
+  }
+}

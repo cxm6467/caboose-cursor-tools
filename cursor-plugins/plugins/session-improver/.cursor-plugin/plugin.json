@@ -1,0 +1,23 @@
+{
+  "name": "session-improver",
+  "version": "1.0.0",
+  "description": "Optimize your Cursor AI workflow by analyzing session history to identify inefficiencies. Detects token waste from repeated file reads, linter loops from unfixed errors, and missing automations. Recommends hooks, linter configs, and workflow improvements. Use '/improve-session' or run 'parse-session --current' to analyze your current session.",
+  "longDescription": "This plugin parses Cursor's SQLite session database to find patterns that waste tokens and time. It identifies:\n- Repeated file reads that could be consolidated\n- Linter errors that repeatedly appear without fixes\n- Missing hooks that could automate manual tasks\n- Workflow patterns that could be improved with skills\n\nProvides actionable recommendations with specific commands and configurations to improve your development efficiency.",
+  "features": [
+    "Session history analysis from SQLite database",
+    "Token waste detection and quantification",
+    "Linter loop identification",
+    "Automation gap analysis",
+    "Actionable recommendations with examples",
+    "Hook and config generation suggestions"
+  ],
+  "usageExamples": [
+    "/improve-session - Analyze current Cursor session",
+    "parse-session --current - CLI analysis of current session",
+    "parse-session --session-id <id> - Analyze specific session"
+  ],
+  "author": {
+    "name": "Caboose AI",
+    "url": "https://github.com/cxm6467/caboose-ai"
+  }
+}

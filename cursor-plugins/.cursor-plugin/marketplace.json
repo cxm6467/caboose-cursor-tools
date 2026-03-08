@@ -1,0 +1,41 @@
+{
+  "name": "caboose-cursor-plugins",
+  "version": "1.0.0",
+  "description": "Cursor IDE ports of ericboehs/claude-plugins - Production-ready plugins for CI monitoring, linting, git workflows, Slack integration, and GitHub automation",
+  "author": {
+    "name": "Caboose AI (port)",
+    "url": "https://github.com/cxm6467/caboose-ai"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cxm6467/caboose-ai"
+  },
+  "homepage": "https://github.com/cxm6467/caboose-ai/tree/main/cursor-plugins",
+  "keywords": [
+    "ci",
+    "linting",
+    "git",
+    "github",
+    "slack",
+    "copilot",
+    "gist",
+    "workflows",
+    "automation",
+    "port",
+    "claude-plugins"
+  ],
+  "credits": {
+    "originalAuthor": "Eric Boehs",
+    "originalRepository": "https://github.com/ericboehs/claude-plugins",
+    "note": "These plugins are direct ports of ericboehs/claude-plugins adapted for Cursor IDE"
+  },
+  "plugins": [
+    "session-improver",
+    "code-lint",
+    "watch-ci",
+    "git-utils",
+    "slack",
+    "gh-copilot-review",
+    "gist"
+  ]
+}

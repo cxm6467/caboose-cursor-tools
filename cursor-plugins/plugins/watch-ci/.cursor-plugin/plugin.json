@@ -1,0 +1,31 @@
+{
+  "name": "watch-ci",
+  "version": "1.0.0",
+  "description": "Real-time GitHub Actions CI monitoring with auto-exit on completion. Watch your CI pipeline's progress with live status updates, job tracking, and color-coded results. Perfect for staying in flow - push code, start the watcher, and get notified when CI completes (pass or fail). Supports custom polling intervals.",
+  "longDescription": "This plugin continuously monitors GitHub Actions workflows for the current branch, providing real-time feedback without manual checks. When you run watch-ci after pushing code:\n- Polls GitHub Actions API at configurable intervals (default: 10s)\n- Displays workflow and job status with color coding\n- Shows check names, states, and completion times\n- Auto-exits when all checks complete\n- Returns appropriate exit codes for scripting\n\nIdeal for:\n- Waiting for CI before merging PRs\n- Catching failures quickly without browser switching\n- Automating workflows with CI status dependencies",
+  "features": [
+    "Live GitHub Actions monitoring",
+    "Color-coded status display (green=pass, red=fail, yellow=pending)",
+    "Job-level progress tracking",
+    "Configurable polling interval (default: 10s)",
+    "Auto-exit on workflow completion",
+    "Exit code reflects CI result (0=pass, 1=fail)",
+    "Current branch detection via git",
+    "Works with any GitHub Actions workflow"
+  ],
+  "usageExamples": [
+    "watch-ci - Monitor CI for current branch (10s intervals)",
+    "watch-ci 30 - Custom polling interval (30 seconds)",
+    "watch-ci --help - Show usage information",
+    "Workflow: git push && watch-ci - Push and watch"
+  ],
+  "requiresSetup": {
+    "ghCLI": "Install GitHub CLI: brew install gh",
+    "authentication": "Authenticate: gh auth login",
+    "repository": "Must be in a git repository with GitHub remote"
+  },
+  "author": {
+    "name": "Caboose AI",
+    "url": "https://github.com/cxm6467/caboose-ai"
+  }
+}

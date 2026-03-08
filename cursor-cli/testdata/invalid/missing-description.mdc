@@ -1,0 +1,9 @@
+---
+globs:
+  - "**/*.js"
+alwaysApply: false
+---
+
+# JavaScript Rules
+
+This file is missing a description in the frontmatter.

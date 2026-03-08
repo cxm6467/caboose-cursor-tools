@@ -1,0 +1,8 @@
+{
+  "description": "Automatic linting on file edit/write",
+  "hooks": {
+    "afterFileEdit": {
+      "command": "lint-daemon"
+    }
+  }
+}

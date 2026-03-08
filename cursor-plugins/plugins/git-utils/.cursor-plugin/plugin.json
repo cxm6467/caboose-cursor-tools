@@ -1,0 +1,31 @@
+{
+  "name": "git-utils",
+  "version": "1.1.0",
+  "description": "Streamlined git workflow automation with intelligent skills. Automates common git patterns: atomic commits with semantic messages, PR merging with branch cleanup, and worktree management. Use '/commit-and-push' for quick commits or '/merge-and-cleanup' for complete PR workflows. No manual git commands needed.",
+  "longDescription": "This plugin provides high-level git workflow skills that orchestrate multiple git commands intelligently:\n\n'/commit-and-push' Skill:\n- Stages all modified and new files\n- Asks for confirmation on files to exclude\n- Suggests grouping into separate commits if needed\n- Generates semantic commit messages (feat:, fix:, docs:, etc.)\n- Pushes to origin automatically\n- Follows best practices for commit hygiene\n\n'/merge-and-cleanup' Skill:\n- Merges the current PR on GitHub\n- Deletes the feature branch locally and remotely\n- Switches back to main/master\n- Cleans up worktrees if applicable\n- Provides confirmation at each step\n- Handles errors gracefully\n\nIdeal for maintaining clean git history and automating repetitive workflows.",
+  "features": [
+    "Semantic commit message generation",
+    "Intelligent file staging with user confirmation",
+    "Automated PR merge workflow",
+    "Branch cleanup (local and remote)",
+    "Worktree management",
+    "Error handling and confirmations",
+    "Best practices enforcement",
+    "No binary needed (pure skills)"
+  ],
+  "usageExamples": [
+    "/commit-and-push - Stage, commit, and push all changes",
+    "/merge-and-cleanup - Merge PR and clean up branches",
+    "Say 'commit and push' or 'push this up' - Natural language triggers",
+    "Say 'merge this PR' - Initiates merge workflow"
+  ],
+  "requiresSetup": {
+    "git": "Git must be installed",
+    "ghCLI": "GitHub CLI for PR operations: brew install gh",
+    "cursorrules": "Skills must be added to .cursorrules file"
+  },
+  "author": {
+    "name": "Caboose AI",
+    "url": "https://github.com/cxm6467/caboose-ai"
+  }
+}
