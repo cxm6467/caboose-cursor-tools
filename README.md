@@ -1,85 +1,153 @@
 # Caboose Cursor Tools
 
-A collection of tools and plugins for Cursor IDE, ported from [claude-plugins](https://github.com/ericboehs/claude-plugins) by Eric Boehs.
+Two powerful toolsets for Cursor IDE development workflows.
 
-## Projects
+## What's Inside
 
 ### 🔧 cursor-cli
 Go-based CLI tool for managing Cursor IDE's `.cursorrules` and `.mdc` rule files with marketplace discovery, installation, and version control.
 
 [**Read cursor-cli documentation →**](./cursor-cli/README.md)
 
-**Features:**
-- MDC parser and validator
-- Local and remote rule installation
-- Marketplace support with search and updates
-- Template generation
-- Lock file management
-
-**Installation:**
-```bash
-cd cursor-cli
-go build -o bin/crules ./cmd/crules
-sudo cp bin/crules /usr/local/bin/
-```
+---
 
 ### 🔌 cursor-plugins
-Complete port of claude-plugins to Cursor IDE with Go implementations and skill definitions.
+**Cursor IDE port of [claude-plugins](https://github.com/ericboehs/claude-plugins) by Eric Boehs.**
+
+The originals are Ruby/Bash scripts designed for Claude Code CLI. This port reimplements them as **Go binaries** using Cursor's `.cursor-plugin` format, so they run seamlessly inside Cursor IDE.
 
 [**Read cursor-plugins documentation →**](./cursor-plugins/README.md)
 
-**7 Plugins Available:**
+#### What It Is
 
-#### Binary Plugins (Go):
-1. **session-improver** (7.6 MB) - Analyze sessions for efficiency improvements
-2. **code-lint** (3.4 MB) - Multi-language automatic linting
-3. **watch-ci** (3.4 MB) - Real-time GitHub Actions monitoring
-4. **gh-copilot-review** (3.6 MB) - Automated Copilot review workflow
+A **bundle of 7 sub-plugins** that enhance your Cursor workflow:
 
-#### Skill-Only Plugins:
-5. **git-utils** - Semantic commits and PR automation
-6. **slack** - Complete Slack integration
-7. **gist** - AI-generated gist documentation
+| Plugin | What It Does | Type |
+|--------|-------------|------|
+| **session-improver** | Analyzes Cursor session history (SQLite) for inefficiencies, token waste, linter loops | Go Binary + Skill |
+| **code-lint** | Runs linters automatically when you edit files via Cursor hooks | Go Binary (Hook) |
+| **watch-ci** | Watches GitHub Actions CI for current branch with live status updates | Go Binary |
+| **gh-copilot-review** | Watches for Copilot PR reviews, displays comments, helps apply/resolve feedback | Go Binary + Skill |
+| **git-utils** | Git workflows: semantic commit + push, merge PR + cleanup branches | Skills |
+| **slack** | Slack integration via slk CLI: unread, channels, search, status, messages | Skills |
+| **gist** | Create/update GitHub Gists with AI-generated README documentation | Skills |
 
-**Installation:**
+#### How You Use It
+
+**1. Commands (Slash or Natural Language)**
 ```bash
-cd cursor-plugins
-make build
-make install
+/commit-and-push          # Invoke skill by name
+/merge-and-cleanup        # Merge PR and cleanup
+/slack                    # Check Slack messages
+/gist-create myfile.js    # Create gist with AI docs
+/improve-session          # Analyze session efficiency
+/gh-copilot-review        # Process Copilot feedback
 ```
 
-## Quick Start
+Or just say things naturally:
+- "commit and push"
+- "watch ci"
+- "check slack"
+- "create a gist from this file"
 
-### Install cursor-cli
-```bash
-cd cursor-cli
-go build -o bin/crules ./cmd/crules
-./bin/crules init
-./bin/crules new my-rule
-```
+**2. Skills**
+Each sub-plugin defines skills (instructions in `skills/*/SKILL.md`). When you invoke a skill, Cursor AI reads the SKILL instructions and executes the workflow — often by running the plugin's binaries or CLI commands.
 
-### Install cursor-plugins
+**3. Hooks (code-lint)**
+`code-lint` uses Cursor's hook system. The plugin ships a `hooks.json` that runs `lint-daemon` on `afterFileEdit`. When you (or the AI) edit a file, Cursor automatically runs the hook, lints the file, and feeds results back into the chat.
+
+**4. Binaries**
+Some features rely on Go binaries: `parse-session`, `lint-daemon`, `watch-ci`, `watch-copilot-reviews`. After `make install`, these are available in your PATH for both manual use and skill automation.
+
+#### Installation
 ```bash
 cd cursor-plugins
-make build        # Build all binaries
+make build        # Build all Go binaries
 make install      # Install to /usr/local/bin
 
-# Test the tools
+# Binaries are now available:
 watch-ci          # Monitor CI status
 parse-session --current  # Analyze current session
 ```
 
+## Quick Start
+
+### Option 1: cursor-cli (Rules Management)
+```bash
+cd cursor-cli
+go build -o bin/crules ./cmd/crules
+sudo cp bin/crules /usr/local/bin/
+
+# Use it
+crules init                    # Initialize .cursor/rules/
+crules new typescript-rules    # Create new rule
+crules marketplace add <url>   # Add marketplace
+crules search react            # Search for rules
+crules install react-patterns  # Install from marketplace
+```
+
+### Option 2: cursor-plugins (Workflow Automation)
+```bash
+cd cursor-plugins
+make build        # Build all Go binaries
+make install      # Install to /usr/local/bin
+
+# Use directly
+watch-ci                      # Watch CI for current branch
+parse-session --current       # Analyze session
+
+# Or use via Cursor AI
+# Just say: "commit and push"
+# Or type: /slack
+```
+
+### Using Skills in Cursor
+
+Once installed, you can:
+1. **Type slash commands:** `/commit-and-push`, `/slack`, `/gist-create myfile.js`
+2. **Speak naturally:** "commit and push these changes", "check my slack messages"
+3. **Let hooks work:** Edit a file → `code-lint` auto-runs (if hooks configured)
+
+See [cursor-plugins/USAGE.md](./cursor-plugins/USAGE.md) for detailed setup.
+
 ## Requirements
 
+### For cursor-cli
 - **Go 1.21+** (for building)
-- **gh CLI** (for GitHub integration)
+
+### For cursor-plugins
+- **Go 1.21+** (for building binaries)
+- **gh CLI** (for GitHub integration: `watch-ci`, `gh-copilot-review`)
 - **Ruby + slk gem** (optional, for Slack plugin)
+- **Git** (for git-utils skills)
 
-## Attribution
+## Attribution & Port Details
 
-- **cursor-plugins** are direct ports of [ericboehs/claude-plugins](https://github.com/ericboehs/claude-plugins)
-- Original author: [Eric Boehs](https://github.com/ericboehs)
-- ⭐ **Please star the original repository:** https://github.com/ericboehs/claude-plugins
+### cursor-plugins
+**Direct port of [ericboehs/claude-plugins](https://github.com/ericboehs/claude-plugins)**
+
+- **Original author:** [Eric Boehs](https://github.com/ericboehs)
+- ⭐ **Please star the original:** https://github.com/ericboehs/claude-plugins
+
+#### What Changed in the Port
+
+| Aspect | Original (claude-plugins) | This Port (cursor-plugins) |
+|--------|---------------------------|----------------------------|
+| **Target IDE** | Claude Code CLI | Cursor IDE |
+| **Language** | Ruby/Bash scripts | Go binaries |
+| **Plugin Format** | `.claude-plugin` | `.cursor-plugin` |
+| **Session Storage** | JSONL files | SQLite database |
+| **File Paths** | `~/.claude/` | `~/.cursor/` |
+| **Rules Files** | `CLAUDE.md` | `.cursorrules` |
+
+#### What Stayed the Same
+
+- ✅ All workflow logic and behavior
+- ✅ Skill definitions and instructions
+- ✅ Command-line interfaces
+- ✅ User experience
+
+The port maintains **100% functional compatibility** while adapting to Cursor's architecture.
 
 ## Documentation
 
