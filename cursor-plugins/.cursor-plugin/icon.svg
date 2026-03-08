@@ -1,0 +1,82 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with gradient -->
+  <rect width="256" height="256" rx="32" fill="url(#bgGradient)"/>
+
+  <!-- Gradient definitions -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0" y1="0" x2="256" y2="256" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#0f3460"/>
+    </linearGradient>
+    <linearGradient id="gearGradient" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="100%" stop-color="#0084ff"/>
+    </linearGradient>
+    <linearGradient id="codeGradient" x1="0" y1="0" x2="150" y2="150" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#c026d3"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Large gear (automation) -->
+  <g transform="translate(128, 128)">
+    <!-- Gear teeth -->
+    <path d="M 0,-70 L 10,-65 L 10,-55 L 0,-50
+             L 50,0 L 55,-10 L 65,-10 L 70,0
+             L 0,50 L -10,55 L -10,65 L 0,70
+             L -50,0 L -55,10 L -65,10 L -70,0
+             L 0,-50 L 10,-55 L 10,-65 L 0,-70 Z"
+          fill="url(#gearGradient)"
+          opacity="0.8"
+          transform="rotate(15)"/>
+    <!-- Gear center -->
+    <circle r="35" fill="#1a1a2e" stroke="url(#gearGradient)" stroke-width="4"/>
+
+    <!-- Inner code brackets -->
+    <g opacity="0.9">
+      <!-- Left bracket < -->
+      <path d="M -15,-20 L -25,-10 L -15,0 M -15,0 L -25,10 L -15,20"
+            stroke="url(#codeGradient)"
+            stroke-width="4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            fill="none"/>
+      <!-- Right bracket > -->
+      <path d="M 15,-20 L 25,-10 L 15,0 M 15,0 L 25,10 L 15,20"
+            stroke="url(#codeGradient)"
+            stroke-width="4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            fill="none"/>
+    </g>
+  </g>
+
+  <!-- Small accent gears for depth -->
+  <g opacity="0.5">
+    <!-- Top right small gear -->
+    <circle cx="200" cy="56" r="20" fill="none" stroke="#00d4ff" stroke-width="3"/>
+    <circle cx="200" cy="56" r="10" fill="#00d4ff"/>
+
+    <!-- Bottom left small gear -->
+    <circle cx="56" cy="200" r="16" fill="none" stroke="#c026d3" stroke-width="2.5"/>
+    <circle cx="56" cy="200" r="8" fill="#c026d3"/>
+  </g>
+
+  <!-- Glowing particles for digital effect -->
+  <g opacity="0.6">
+    <circle cx="80" cy="80" r="3" fill="#00d4ff">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="176" cy="130" r="2" fill="#c026d3">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="120" cy="190" r="2.5" fill="#00d4ff">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Terminal cursor blink effect -->
+  <rect x="145" y="125" width="12" height="3" fill="#00d4ff" opacity="0.8">
+    <animate attributeName="opacity" values="0;1;0" dur="1s" repeatCount="indefinite"/>
+  </rect>
+</svg>

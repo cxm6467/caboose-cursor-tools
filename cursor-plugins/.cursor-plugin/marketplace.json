@@ -1,16 +1,19 @@
 {
   "name": "caboose-cursor-plugins",
+  "displayName": "Cursor Workflow Automation Bundle",
   "version": "1.0.0",
-  "description": "Cursor IDE ports of ericboehs/claude-plugins - Production-ready plugins for CI monitoring, linting, git workflows, Slack integration, and GitHub automation",
+  "description": "7-in-1 plugin bundle: session analysis, auto-linting, CI monitoring, Copilot reviews, git workflows, Slack, and gists. Go port of claude-plugins for Cursor IDE.",
+  "longDescription": "Complete workflow automation suite ported from Eric Boehs' claude-plugins. Includes: 🔍 session-improver (analyze token waste), 🔧 code-lint (auto-linting hooks), ⏱️ watch-ci (live GitHub Actions), 🤖 gh-copilot-review (automated PR feedback), 🔀 git-utils (semantic commits), 💬 slack (team communication), and 📝 gist (AI-documented code sharing). Originally Ruby/Bash for Claude Code CLI, reimplemented as Go binaries for Cursor IDE.",
+  "icon": "icon.svg",
   "author": {
     "name": "Caboose AI (port)",
-    "url": "https://github.com/cxm6467/caboose-ai"
+    "url": "https://github.com/cxm6467/caboose-cursor-tools"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cxm6467/caboose-ai"
+    "url": "https://github.com/cxm6467/caboose-cursor-tools"
   },
-  "homepage": "https://github.com/cxm6467/caboose-ai/tree/main/cursor-plugins",
+  "homepage": "https://github.com/cxm6467/caboose-cursor-tools/tree/main/cursor-plugins",
   "keywords": [
     "ci",
     "linting",
