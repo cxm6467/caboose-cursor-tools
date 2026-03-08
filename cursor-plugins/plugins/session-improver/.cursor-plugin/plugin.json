@@ -12,7 +12,7 @@
     "Hook and config generation suggestions"
   ],
   "usageExamples": [
-    "/improve-session - Analyze current Cursor session",
+    "/session-improver or /improve-session - Analyze current Cursor session",
     "parse-session --current - CLI analysis of current session",
     "parse-session --session-id <id> - Analyze specific session"
   ],
