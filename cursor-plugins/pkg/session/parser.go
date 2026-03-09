@@ -103,6 +103,7 @@ type Parser struct {
 }
 
 // NewParser creates a new session parser
+// NOTE: This is for Claude Code JSONL format. For Cursor, use NewCursorAdapter() instead.
 func NewParser() (*Parser, error) {
 	// Determine Cursor DB path based on OS
 	dbPath, err := getCursorDBPath()
@@ -111,6 +112,26 @@ func NewParser() (*Parser, error) {
 	}
 
 	return &Parser{dbPath: dbPath}, nil
+}
+
+// ParseCursorSession parses a Cursor JSONL transcript
+func ParseCursorSession(sessionPath string) (*SessionSummary, error) {
+	adapter, err := NewCursorAdapter()
+	if err != nil {
+		return nil, err
+	}
+
+	return adapter.ParseTranscript(sessionPath)
+}
+
+// FindRecentCursorSession finds the most recent Cursor transcript
+func FindRecentCursorSession() (string, error) {
+	adapter, err := NewCursorAdapter()
+	if err != nil {
+		return "", err
+	}
+
+	return adapter.FindRecentTranscript()
 }
 
 // ParseSession parses a Cursor session and returns a summary
