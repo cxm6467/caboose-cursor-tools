@@ -24,25 +24,35 @@ Analyze Cursor IDE session transcripts to identify workflow inefficiencies and g
 
 ## Usage
 
-- `/improve-session` — Analyze the most recent session
-- `/improve-session <session-id>` — Analyze a specific past session
-- `/improve-session --current` — Analyze the current live session
+**Always use:** `/improve-session` to analyze the most recent Cursor IDE session
+
+**DO NOT:**
+- Look for Claude Code sessions at `~/.claude/`
+- Try to list "Claude projects"
+- Use Ruby scripts or parse-session.rb
+
+**This skill is Cursor-only.** It analyzes Cursor IDE transcripts from:
+```
+~/.cursor/projects/*/agent-transcripts/UUID/UUID.jsonl
+```
 
 ## Workflow
 
 ### Phase 1: Parse the session
 
-Run the parser script to extract a structured summary:
+Run the Cursor transcript parser to extract a structured summary:
 
 ```bash
-parse-session <session-id-or--current>
+parse-session --current
 ```
 
-The `parse-session` binary should be in your PATH or at `${CURSOR_PLUGIN_DIR}/../../cmd/parse-session/parse-session`.
+The `parse-session` binary reads Cursor's JSONL transcripts from `~/.cursor/projects/*/agent-transcripts/`.
 
-The argument is either:
-- A session UUID
-- `--current` for the most recent session
+**IMPORTANT:**
+- This binary ONLY works with Cursor IDE (not Claude Code)
+- Reads from: `~/.cursor/projects/*/agent-transcripts/*.jsonl`
+- Does NOT use: `~/.claude/` paths or Ruby scripts
+- Native Go binary built specifically for Cursor's JSONL transcript format
 
 The script outputs JSON with these sections:
 - `linter_loops` — Linter smells that triggered multiple edit cycles
@@ -54,14 +64,18 @@ The script outputs JSON with these sections:
 
 ### Phase 2: Read context
 
-For each finding, read relevant project files to understand what's already configured:
-- The project's `.cursorrules` files
-- The project's `.cursor/settings.json`
-- The project's `.cursor/hooks.json`
-- Any `.eslintrc`, `tsconfig.json`, `.prettierrc`, etc.
-- The global `.cursorrules` (if any)
-- The global `~/.cursor/hooks.json`
-- The global `~/.config/Cursor/User/settings.json`
+Read **Cursor IDE configuration files only**:
+
+**DO read:**
+- `.cursorrules` (project Cursor rules)
+- `.cursor/settings.json` (Cursor settings)
+- `.cursor/hooks.json` (Cursor hooks)
+- Linter configs: `.eslintrc`, `tsconfig.json`, `.prettierrc`
+- Global Cursor rules at `~/.cursorrules`
+
+**DO NOT read:**
+- `CLAUDE.md` or `~/.claude/CLAUDE.md` (wrong IDE)
+- Any Claude Code configuration files
 
 ### Phase 3: Generate recommendations
 
@@ -99,11 +113,19 @@ Based on the session analysis and current configuration, recommend specific fixe
 
 ### Phase 4: Apply fixes (if requested)
 
-Offer to apply recommended fixes:
-- Create or update `.cursorrules` files
-- Create or update `.cursor/hooks.json`
-- Create or update `.cursor/settings.json`
-- Commit changes with clear descriptions
+Offer to apply recommended fixes to **CURSOR configuration files only**:
+
+**DO create/update:**
+- `.cursorrules` (Cursor IDE rules file)
+- `.cursor/hooks.json` (Cursor hooks)
+- `.cursor/settings.json` (Cursor settings)
+
+**DO NOT create/update:**
+- `CLAUDE.md` (this is for Claude Code CLI, not Cursor)
+- `~/.claude/` (wrong IDE)
+- Any Claude Code configuration files
+
+**Commit changes with clear descriptions after updating Cursor config files.**
 
 ## Example Output
 
